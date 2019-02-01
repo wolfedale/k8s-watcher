@@ -1,7 +1,10 @@
 package pods
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
+	"github.com/wolfedale/k8s-watcher/pkg/cluster"
 )
 
 // NewCommand returns a new cobra.Command for getting the list of pods
@@ -19,13 +22,14 @@ func NewCommand() *cobra.Command {
 }
 
 func runE(cmd *cobra.Command, args []string) error {
-	/*
-		pods, err := pod.Run()
-		if err != nil {
-			return errors.Wrap(err, "error show pods")
-		}
+	ctx := cluster.NewContext()
 
-		return nil
+	fmt.Println(ctx)
+	/*
+		if err = ctx.Create(cfg, flags.Retain, flags.Wait); err != nil {
+			return errors.Wrap(err, "failed to create cluster")
+		}
 	*/
+
 	return nil
 }
