@@ -1,6 +1,7 @@
 package meta
 
 import (
+	"fmt"
 	"os"
 
 	"k8s.io/client-go/kubernetes"
@@ -19,5 +20,6 @@ func NewClusterMeta() string {
 		panic(err.Error())
 	}
 
+	fmt.Println(clientset)
 	return "foobar"
 }

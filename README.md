@@ -8,3 +8,8 @@ $ get pods
 $ get services
 $ get deployments
 ```
+
+How to fix build issue:
+```
+https://github.com/kubernetes/client-go/issues/551
+```
