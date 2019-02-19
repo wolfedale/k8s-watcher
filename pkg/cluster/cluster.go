@@ -2,15 +2,17 @@ package cluster
 
 import (
 	"github.com/wolfedale/k8s-watcher/pkg/cluster/meta"
+	"k8s.io/client-go/informers"
 )
 
+type infor informers.SharedInformerFactory
+
 type Context struct {
-	factory string
+	Factory infor
 }
 
 func NewContext() *Context {
 	return &Context{
-		factory: meta.NewClusterMeta(),
-		//factory: "foo",
+		Factory: meta.NewClusterMeta(),
 	}
 }

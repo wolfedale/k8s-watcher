@@ -1,14 +1,14 @@
 package meta
 
 import (
-	"fmt"
 	"os"
 
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/informers"
 )
 
-func NewClusterMeta() string {
+func NewClusterMeta() informers.SharedInformerFactory {
 	kubeconfig := os.Getenv("KUBECONFIG")
 	config, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
 	if err != nil {
@@ -20,6 +20,5 @@ func NewClusterMeta() string {
 		panic(err.Error())
 	}
 
-	fmt.Println(clientset)
-	return "foobar"
+	return informers.NewSharedInformerFactory(clientset, 0)
 }
